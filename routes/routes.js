@@ -1,14 +1,12 @@
 import { Router } from 'express';
-import mongoose from 'mongoose';
-import { insert } from '../controllers/car.controller.js';
+import { getAll, insert } from '../controllers/car.controller.js';
 import filter from '../middleware/filter.js';
 
 const router = Router();
-const connection = mongoose.connection;
 
 router
 	.route('/')
-	.get(filter, (req, res) => res.send('all cars'))
+	.get(getAll, filter, (req, res) => res.send(req.cars))
 	.post(insert, (req, res) => {
 		res.send('car was added');
 	});

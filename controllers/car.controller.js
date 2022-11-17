@@ -13,12 +13,23 @@ export const insert = (req, res, next) => {
 	)
 		.then(result => {
 			req.body.manufacturer = result;
-			Car.create(req.body);
+			Car.create(req.body).then(() => next());
 		})
 		.catch(err => {
 			console.log(`failed to insert car: ${err}`);
 			return res.status(500).send('error, try again later');
 		});
+};
 
-	next();
+export const getAll = (req, res, next) => {
+	Car.find({}, '-_id')
+		.populate('manufacturer', '-_id')
+		.then(result => {
+			req.cars = result;
+			next();
+		})
+		.catch(err => {
+			console.log(`failed to get cars: ${err}`);
+			return res.status(500).send('error, try again later');
+		});
 };
