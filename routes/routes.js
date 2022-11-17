@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
+import { insert } from '../controllers/car.controller.js';
 import filter from '../middleware/filter.js';
-import Car from '../models/car.js';
-import Manufacturer from '../models/manufacturer.js';
 
 const router = Router();
 const connection = mongoose.connection;
@@ -10,25 +9,8 @@ const connection = mongoose.connection;
 router
 	.route('/')
 	.get(filter, (req, res) => res.send('all cars'))
-	.post((req, res) => {
-		Manufacturer.findOneAndUpdate(
-			{ name: req.body.manufacturer.name },
-			req.body.manufacturer,
-			{
-				upsert: true,
-				new: true
-			}
-		)
-			.then(result => {
-				req.body.manufacturer = result;
-				Car.create(req.body).then(() => {
-					res.send('car was added');
-				});
-			})
-			.catch(err => {
-				console.log(`failed to insert car: ${err}`);
-				res.send('error, try again later');
-			});
+	.post(insert, (req, res) => {
+		res.send('car was added');
 	});
 
 router
