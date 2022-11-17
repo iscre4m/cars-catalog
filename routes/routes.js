@@ -1,10 +1,11 @@
 import { Router } from 'express';
+import filter from '../middleware/filter.js';
 
 const router = Router();
 
 router
 	.route('/')
-	.get((req, res) => res.send('all cars'))
+	.get(filter, (req, res) => res.send('all cars'))
 	.post((req, res) => res.send('car was added'));
 
 router

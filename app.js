@@ -1,19 +1,10 @@
-import express from 'express';
-import fs from 'fs';
-import https from 'https';
+import mongoose from 'mongoose';
 import config from './config/main.js';
-import router from './routes/routes.js';
+import server from './server.js';
 
-const app = express();
-
-app.use(router);
-
-https
-	.createServer(
-		{
-			key: fs.readFileSync(config.PATH_TO_KEY),
-			cert: fs.readFileSync(config.PATH_TO_CERT)
-		},
-		app
-	)
-	.listen(config.PORT, () => console.log(`https://localhost:${config.PORT}`));
+mongoose
+	.connect(config.CONNECTION_STRING)
+	.then(() => {
+		server.start();
+	})
+	.catch(err => console.log(`failed to connect: ${err}`));
