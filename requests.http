@@ -35,3 +35,17 @@ GET https://localhost:3000?maxPrice=12000
 ###
 
 GET https://localhost:3000?minPrice=1999&maxPrice=13999
+
+###
+
+POST https://localhost:3000
+Content-Type: application/json
+
+{
+    "name": "Golf 7 GTI",
+    "manufacturer": { "name": "Volkswagen" },
+    "yearManufactured": 2019,
+    "engineVolume": 2.2,
+    "price": 22000,
+    "color": "Gray"
+}
