@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAll, insert } from '../controllers/car.controller.js';
+import { getAll, getById, insert } from '../controllers/car.controller.js';
 import filter from '../middleware/filter.js';
 
 const router = Router();
@@ -13,7 +13,7 @@ router
 
 router
 	.route('/:id')
-	.get((req, res) => res.send(`car ${req.params.id}`))
+	.get(getById, (req, res) => res.send(req.car))
 	.put((req, res) => res.send('car was edited'))
 	.delete((req, res) => res.send('car was removed'));
 

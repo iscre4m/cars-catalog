@@ -49,3 +49,7 @@ Content-Type: application/json
     "price": 41000,
     "color": "Red"
 }
+
+###
+
+GET https://localhost:3000/6376569ea5d0c9cabcd316a6

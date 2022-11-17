@@ -33,3 +33,17 @@ export const getAll = (req, res, next) => {
 			return res.status(500).send('error, try again later');
 		});
 };
+
+export const getById = (req, res, next) => {
+	const id = req.params.id;
+	Car.findOne({ _id: id }, '-_id')
+		.populate('manufacturer', '-_id')
+		.then(result => {
+			req.car = result;
+			next();
+		})
+		.catch(err => {
+			console.log(`failed to get car: ${err}`);
+			return res.status(500).send('error, try again later');
+		});
+};
