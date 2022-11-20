@@ -2,39 +2,39 @@ GET https://localhost:3000
 
 ###
 
-GET https://localhost:3000?manufacturer=bmw
+GET https://localhost:3000?manufacturer=shelby
 
-###
+###`
 
 GET https://localhost:3000?yearManufactured=2019
 
 ###
 
-GET https://localhost:3000?color=yellow
+GET https://localhost:3000?color=blue
 
 ###
 
-GET https://localhost:3000?minEngineVolume=1.0
+GET https://localhost:3000?minEngineVolume=2
 
 ###
 
-GET https://localhost:3000?maxEngineVolume=5.2
+GET https://localhost:3000?maxEngineVolume=3
 
 ###
 
-GET https://localhost:3000?minEngineVolume=1.2&maxEngineVolume=4.3
+GET https://localhost:3000?minEngineVolume=1.2&maxEngineVolume=3
 
 ###
 
-GET https://localhost:3000?minPrice=4000
+GET https://localhost:3000?minPrice=30000
 
 ###
 
-GET https://localhost:3000?maxPrice=12000
+GET https://localhost:3000?maxPrice=32000
 
 ###
 
-GET https://localhost:3000?minPrice=1999&maxPrice=13999
+GET https://localhost:3000?minPrice=30099&maxPrice=53999
 
 ###
 

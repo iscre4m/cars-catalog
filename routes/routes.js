@@ -12,7 +12,12 @@ const router = Router();
 
 router
 	.route('/')
-	.get(getAll, filter, (req, res) => res.send(req.cars))
+	.get(getAll, filter, (req, res) => {
+		if (req.cars.length) {
+			return res.json(req.cars);
+		}
+		res.send('no cars to get');
+	})
 	.post(insert, (req, res) => {
 		res.send('car was added');
 	});

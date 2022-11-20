@@ -1,4 +1,8 @@
+import Car from '../models/car.js';
+import Manufacturer from '../models/manufacturer.js';
+
 const filter = (req, res, next) => {
+	console.log(req.query);
 	const {
 		manufacturer,
 		yearManufactured,
@@ -10,41 +14,55 @@ const filter = (req, res, next) => {
 	} = req.query;
 
 	if (manufacturer) {
-		return res.send(`all ${manufacturer} cars`);
+		req.cars = req.cars.filter(
+			c => c.manufacturer.name.toLowerCase() === manufacturer.toLowerCase()
+		);
 	}
 
 	if (yearManufactured) {
-		return res.send(`all ${yearManufactured} cars`);
+		req.cars = req.cars.filter(
+			c => c.yearManufactured === parseInt(yearManufactured)
+		);
 	}
 
 	if (color) {
-		return res.send(`all ${color} cars`);
+		req.cars = req.cars.filter(
+			c => c.color.toLowerCase() === color.toLowerCase()
+		);
 	}
 
 	if (minEngineVolume && maxEngineVolume) {
-		return res.send(
-			`all cars with engine volume from ${minEngineVolume} to ${maxEngineVolume}l`
+		req.cars = req.cars.filter(
+			c =>
+				c.engineVolume >= parseFloat(minEngineVolume) &&
+				c.engineVolume <= parseFloat(maxEngineVolume)
 		);
 	}
 
 	if (minEngineVolume) {
-		return res.send(`all cars with engine volume from ${minEngineVolume}l`);
+		req.cars = req.cars.filter(
+			c => c.engineVolume >= parseFloat(minEngineVolume)
+		);
 	}
 
 	if (maxEngineVolume) {
-		return res.send(`all cars with engine volume below ${maxEngineVolume}l`);
+		req.cars = req.cars.filter(
+			c => c.engineVolume <= parseFloat(maxEngineVolume)
+		);
 	}
 
 	if (minPrice && maxPrice) {
-		return res.send(`all cars from $${minPrice} to $${maxPrice}`);
+		req.cars = req.cars.filter(
+			c => c.price >= parseInt(minPrice) && c.price <= parseInt(maxPrice)
+		);
 	}
 
 	if (minPrice) {
-		return res.send(`all cars from $${minPrice}`);
+		req.cars = req.cars.filter(c => c.price >= parseInt(minPrice));
 	}
 
 	if (maxPrice) {
-		return res.send(`all cars below $${maxPrice}`);
+		req.cars = req.cars.filter(c => c.price <= parseInt(maxPrice));
 	}
 
 	next();
