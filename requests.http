@@ -53,3 +53,21 @@ Content-Type: application/json
 ###
 
 GET https://localhost:3000/6376569ea5d0c9cabcd316a6
+
+###
+
+DELETE https://localhost:3000/637656b1a5d0c9cabcd316a9
+
+###
+
+PUT https://localhost:3000/637a451060e2fa1724338ef2
+Content-Type: application/json
+
+{
+    "name": "GT500",
+    "manufacturer": { "name": "Shelby" },
+    "yearManufactured": 2016,
+    "engineVolume": 3.5,
+    "price": 45000,
+    "color": "Blue"
+}
