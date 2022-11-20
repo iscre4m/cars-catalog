@@ -79,4 +79,11 @@ export const editById = (req, res, next) => {
 				return res.status(500).send('error, try again later');
 			});
 	}
+
+	Car.findByIdAndUpdate(id, req.body)
+		.then(() => next())
+		.catch(err => {
+			console.log(`failed to edit car: ${err}`);
+			return res.status(500).send('error, try again later');
+		});
 };
