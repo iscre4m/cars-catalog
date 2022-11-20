@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export const manufacturerSchema = new mongoose.Schema(
+const manufacturerSchema = new mongoose.Schema(
 	{
 		name: { type: String, unique: true, required: true, minLength: 2 }
 	},

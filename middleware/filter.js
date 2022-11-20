@@ -2,7 +2,6 @@ import Car from '../models/car.js';
 import Manufacturer from '../models/manufacturer.js';
 
 const filter = (req, res, next) => {
-	console.log(req.query);
 	const {
 		manufacturer,
 		yearManufactured,

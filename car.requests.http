@@ -1,0 +1,75 @@
+GET https://localhost:3000
+
+###
+
+GET https://localhost:3000?manufacturer=lamborghini
+
+###`
+
+GET https://localhost:3000?yearManufactured=2019
+
+###
+
+GET https://localhost:3000?color=blue
+
+###
+
+GET https://localhost:3000?minEngineVolume=2
+
+###
+
+GET https://localhost:3000?maxEngineVolume=3
+
+###
+
+GET https://localhost:3000?minEngineVolume=1.2&maxEngineVolume=3
+
+###
+
+GET https://localhost:3000?minPrice=30000
+
+###
+
+GET https://localhost:3000?maxPrice=32000
+
+###
+
+GET https://localhost:3000?minPrice=30099&maxPrice=53999
+
+###
+
+POST https://localhost:3000
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2E3ZTFkN2RiZWFlMmNmNTdjM2RjYSIsImlhdCI6MTY2ODk3MzY5MiwiZXhwIjoxNjY5MDYwMDkyfQ.WJdDePGUMADUgWbGgqxvixgnxuig7Tw7DyTcz28zy-Y
+
+{
+    "name": "Mustang",
+    "manufacturer": { "name": "Ford" },
+    "yearManufactured": 2014,
+    "engineVolume": 3.3,
+    "price": 39000,
+    "color": "Red"
+}
+
+###
+
+GET https://localhost:3000/6376569ea5d0c9cabcd316a6
+
+###
+
+DELETE https://localhost:3000/637a85d06821cf60bb363fbc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2E3ZTFkN2RiZWFlMmNmNTdjM2RjYSIsImlhdCI6MTY2ODk3MzY5MiwiZXhwIjoxNjY5MDYwMDkyfQ.WJdDePGUMADUgWbGgqxvixgnxuig7Tw7DyTcz28zy-Y
+###
+
+PUT https://localhost:3000/637a451060e2fa1724338ef2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzN2E3ZTFkN2RiZWFlMmNmNTdjM2RjYSIsImlhdCI6MTY2ODk3MzY5MiwiZXhwIjoxNjY5MDYwMDkyfQ.WJdDePGUMADUgWbGgqxvixgnxuig7Tw7DyTcz28zy-Y
+Content-Type: application/json
+
+{
+    "name": "Gallardo",
+    "manufacturer": { "name": "Lamborghini" },
+    "yearManufactured": 2010,
+    "engineVolume": 5.0,
+    "price": 151000,
+    "color": "Yellow"
+}
